@@ -31,8 +31,6 @@ class Book_model extends CI_Model
 						return_date IS NULL
 				)
 		";
-		echo $str_sql;
-		exit;
 		$query = $this->db->query($str_sql);
 		return $query->result();
 	}
