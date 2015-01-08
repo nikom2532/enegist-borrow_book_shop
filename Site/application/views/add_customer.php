@@ -46,8 +46,7 @@
 </div>
 
 <script>
-	$(document).ready(function(){
-		$("#submit").live("click", function(){
+		$("#submit").click(function(){
 			$.post(
 				"<?php echo base_url(); ?>index.php/add_customer/insert",
 				{
@@ -65,12 +64,11 @@
 					work_code: $("[name=work_code]").val()
 				},
 				function(data){
-					
+					console.log(data);
 				},
 				"json"
 			);
 		});
-	});
 </script>
 
 </body>
