@@ -6,13 +6,16 @@ class Borrow_Books extends CI_Controller {
 		parent::__construct();
 		$this->load->helper('url');
 		$this->load->library('session');
-		$this->load->model('customer_model');
+		$this->load->model('book_model');
 	}
 
 	public function index()
 	{
+		$data["customer"] = $this->book_model->get_customer();
+		$data["book"] = $this->book_model->get_book();
+		
 		$this->load->view('header');
-		$this->load->view('borrow_book');
+		$this->load->view('borrow_books', $data);
 	}
 }
 

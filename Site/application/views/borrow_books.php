@@ -1,16 +1,44 @@
 <body>
 
 <div id="container">
-	<h1>Add Customer</h1>
+	<h1>Borrow Books</h1>
 	
 	<form id="add_cus" action="#" method="post">
 		<div id="body">
+			<?php // var_dump($customer); ?>
 			<div>
-				cus_name : <input name="cus_name" value="" />
+				Choose a Customer : 
+				<select>
+					<option value="">Select a Customer</option>
+<?php
+					foreach ($customer as $key => $value) {
+?>
+						<option value="<?php echo $value->id; ?>"><?php echo $value->first_name." ".$value->last_name; ?></option>
+<?php
+					}
+?>
+						
+						
+				</select>
 			</div>
+			
+			
 			<div>
-				cus_surname : <input name="cus_surname" value="" />
+				Choose a Book : 
+				<select>
+					<option value="">Select a Book</option>
+<?php
+					foreach ($book as $key => $value) {
+?>
+						<option value="<?php echo $value->id; ?>"><?php echo "Name: ".$value->title." ; Author: ".$value->author; ?></option>
+<?php
+					}
+?>
+						
+						
+				</select>
 			</div>
+			
 			<div>
 				<br />
 				home_address
