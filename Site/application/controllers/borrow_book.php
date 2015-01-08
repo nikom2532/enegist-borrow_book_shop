@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Borrow_Books extends CI_Controller {
+class Borrow_Book extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
@@ -15,7 +15,7 @@ class Borrow_Books extends CI_Controller {
 		$data["book"] = $this->book_model->get_book();
 		
 		$this->load->view('header');
-		$this->load->view('borrow_books', $data);
+		$this->load->view('borrow_book', $data);
 	}
 }
 
