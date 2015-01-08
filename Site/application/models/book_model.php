@@ -32,10 +32,11 @@ class Book_model extends CI_Model
 				`profile_id`
 		";
 		$query = $this->db->query($sql_str);
+		
 		return $query->result();
 	}
 	
-	private function _isConcurrency($concurrency = '')
+	public function _isConcurrency($concurrency = '')
 	{
 		if($concurrency == null){
 			$isConcurrency = TRUE;
@@ -59,7 +60,6 @@ class Book_model extends CI_Model
 	)
 	{
 		$isConcurrency = $this->_isConcurrency($this->get_count_borrow($customer_id));
-		
 		if($isConcurrency){
 			
 			$today = date("Y-m-d");
