@@ -12,7 +12,32 @@ class Book_model extends CI_Model
 		return $this->db->get('profile')->result();
 	}
 	
-	public function get_count_borrow(
+	public function get_book_except_borrow()
+	{
+		$str_sql = "
+			SELECT 
+				*
+			FROM
+				book
+			WHERE
+				`id` NOT IN (
+					SELECT 
+						book_id
+					FROM
+						borrow
+					where 
+						return_date > CURDATE()
+						OR
+						return_date IS NULL
+				)
+		";
+		echo $str_sql;
+		exit;
+		$query = $this->db->query($str_sql);
+		return $query->result();
+	}
+	
+	private function _get_count_borrow(
 		$profile_id = ''
 	)
 	{
@@ -31,7 +56,7 @@ class Book_model extends CI_Model
 		return $query->result();
 	}
 	
-	public function _isConcurrency($concurrency = '')
+	private function _isConcurrency($concurrency = '')
 	{
 		if($concurrency == null){
 			$isConcurrency = TRUE;
@@ -54,7 +79,7 @@ class Book_model extends CI_Model
 		$book_id = ''
 	)
 	{
-		$isConcurrency = $this->_isConcurrency($this->get_count_borrow($customer_id));
+		$isConcurrency = $this->_isConcurrency($this->_get_count_borrow($customer_id));
 		if($isConcurrency){
 			
 			$today = date("Y-m-d");

@@ -12,7 +12,7 @@ class Borrow_Book extends CI_Controller {
 	public function index()
 	{
 		$data["customer"] = $this->book_model->get_customer();
-		$data["book"] = $this->book_model->get_book();
+		$data["book"] = $this->book_model->get_book_except_borrow();
 		
 		$this->load->view('header');
 		$this->load->view('borrow_book', $data);
