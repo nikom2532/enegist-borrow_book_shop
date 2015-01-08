@@ -13,6 +13,10 @@ class Add_customer extends CI_Controller {
 		$this->load->view('header');
 		$this->load->view('add_customer');
 	}
+	public function insert($value='')
+	{
+		echo $_POST["cus_name"];
+	}
 }
 
 /* End of file welcome.php */
