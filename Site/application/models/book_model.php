@@ -35,30 +35,33 @@ class Book_model extends CI_Model
 		return $query->result();
 	}
 	
+	private function _isConcurrency($concurrency = '')
+	{
+		if($concurrency == null){
+			$isConcurrency = TRUE;
+		}
+		else{
+			foreach ($concurrency as $key => $value) {
+				if($value->count_book < 3){
+					$isConcurrency = TRUE;
+				}
+				else{
+					$isConcurrency = FALSE;
+				}
+			}
+		}
+		return $isConcurrency;
+	}
+	
 	public function insert_borrow(
 		$customer_id = '',
 		$book_id = ''
 	)
 	{
-		$isConcurrency = $this->get_count_borrow($customer_id);
-		var_dump($isConcurrency);
+		$isConcurrency = $this->_isConcurrency($this->get_count_borrow($customer_id));
 		
-		if($isConcurrency == null){
-			echo "pass";
-		}
-		else{
-			foreach ($isConcurrency as $key => $value) {
-				if($value->count_book < 3){
-					echo "pass";
-				}
-				else{
-					echo "false";
-				}
-			}
-		}
-		
-		exit;
-		
+		if($isConcurrency){
+			
 			$today = date("Y-m-d");
 			$due_date = date('Y-m-d', strtotime($today. ' + 14 days'));
 			
@@ -69,12 +72,16 @@ class Book_model extends CI_Model
 				"due_date" => $due_date
 			);
 			
-			// if($this->db->insert("borrow", $data) == TRUE){
-				// return TRUE;
-			// }
-			// else{
-				// return FALSE;
-			// }
+			if($this->db->insert("borrow", $data) == TRUE){
+				return TRUE;
+			}
+			else{
+				return FALSE;
+			}
+		}
+		else {
+			return FALSE;
+		}
 	}
 	
 }
