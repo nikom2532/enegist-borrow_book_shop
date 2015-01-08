@@ -22,8 +22,6 @@ class customer_model extends CI_Model
 	
 	public function insert_address(
 		$profile_id = '',
-		$cus_name = '',
-		$cus_surname = '',
 		$address_type_id = '',
 		$address_1 = '',
 		$address_2 = '',
@@ -35,14 +33,14 @@ class customer_model extends CI_Model
 		$data = array(
 			"address_type_id" => $address_type_id,
 			"profile_id" => $profile_id,
-			"address_1" => $address_1,
-			"address_2" => $address_2,
+			"address1" => $address_1,
+			"address2" => $address_2,
 			"city" => $city,
 			"country" => $country,
 			"zip_code" => $code
 		);
 		
-		if($this->db->insert("News", $data) == TRUE){
+		if($this->db->insert("address", $data) == TRUE){
 			return TRUE;
 		}
 		else{
