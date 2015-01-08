@@ -1,5 +1,9 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+//Show Error
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL

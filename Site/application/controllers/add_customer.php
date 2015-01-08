@@ -7,6 +7,9 @@ class Add_customer extends CI_Controller {
 		// echo base_url();
 		// echo "asdf";
 		// exit;
+		
+		$this->load->helper('url');
+		
 		$this->load->view('header');
 		$this->load->view('add_customer');
 	}
