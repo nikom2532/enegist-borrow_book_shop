@@ -14,7 +14,7 @@ class Add_customer extends CI_Controller {
 		$this->load->view('header');
 		$this->load->view('add_customer');
 	}
-	public function insert($value='')
+	public function insert()
 	{
 		$profile_id = $this->customer_model->insert_customer(
 			$this->input->post("cus_name"),

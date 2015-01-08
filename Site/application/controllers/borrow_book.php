@@ -17,7 +17,14 @@ class Borrow_Book extends CI_Controller {
 		$this->load->view('header');
 		$this->load->view('borrow_book', $data);
 	}
+	
+	public function insert()
+	{
+		$data["borrow_success"] = $this->book_model->insert_borrow(
+			$this->input->post("customer_id"),
+			$this->input->post("book_id")
+		);
+		
+		echo json_encode($data);
+	}
 }
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */

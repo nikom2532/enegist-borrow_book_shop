@@ -17,17 +17,27 @@ class Book_model extends CI_Model
 		return $this->db->get('book')->result();
 	}
 	
-	public function insert_customer(
-		$cus_name = '',
-		$cus_surname = ''
+	public function insert_borrow(
+		$customer_id = '',
+		$book_id = ''
 	)
 	{
+		$today = date("Y-m-d");
+		$due_date = date('Y-m-d', strtotime($today. ' + 14 days'));
+		
 		$data = array(
-			"first_name" => $cus_name,
-			"last_name" => $cus_surname,
+			"profile_id" => $customer_id,
+			"book_id" => $book_id,
+			"check_out_date" => $today,
+			"due_date" => $due_date
 		);
-		$this->db->insert("profile", $data);
-		return $this->db->insert_id();
+		
+		if($this->db->insert("borrow", $data) == TRUE){
+			return TRUE;
+		}
+		else{
+			return FALSE;
+		}
 	}
 	
 }

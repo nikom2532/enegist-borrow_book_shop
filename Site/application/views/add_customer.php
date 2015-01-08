@@ -47,33 +47,40 @@
 
 <script>
 		$("#submit").click(function(){
-			$.post(
-				"<?php echo base_url(); ?>index.php/add_customer/insert",
-				{
-					cus_name: $("[name=cus_name]").val(),
-					cus_surname: $("[name=cus_surname]").val(),
-					home_address_1: $("[name=home_address_1]").val(),
-					home_address_2: $("[name=home_address_2]").val(),
-					home_city: $("[name=home_city]").val(),
-					home_country: $("[name=home_country]").val(),
-					home_code: $("[name=home_code]").val(),
-					work_address_1: $("[name=work_address_1]").val(),
-					work_address_2: $("[name=work_address_2]").val(),
-					work_city: $("[name=work_city]").val(),
-					work_country: $("[name=work_country]").val(),
-					work_code: $("[name=work_code]").val()
-				},
-				function(data){
-					console.log("data.success = " + data.success);
-					if(data.success == true){
-						alert("Success a Customer Recording.");
-					}
-					else{
-						alert("Fail to Record a Customer.");
-					}
-				},
-				"json"
-			);
+			if(!confirm('Do you want to confirm to add a new customer?')){
+				return false;
+			}
+			else{
+				$.post(
+					"<?php echo base_url(); ?>index.php/add_customer/insert",
+					{
+						cus_name: $("[name=cus_name]").val(),
+						cus_surname: $("[name=cus_surname]").val(),
+						home_address_1: $("[name=home_address_1]").val(),
+						home_address_2: $("[name=home_address_2]").val(),
+						home_city: $("[name=home_city]").val(),
+						home_country: $("[name=home_country]").val(),
+						home_code: $("[name=home_code]").val(),
+						work_address_1: $("[name=work_address_1]").val(),
+						work_address_2: $("[name=work_address_2]").val(),
+						work_city: $("[name=work_city]").val(),
+						work_country: $("[name=work_country]").val(),
+						work_code: $("[name=work_code]").val()
+					},
+					function(data){
+						console.log("data.success = " + data.success);
+						if(data.success == true){
+							alert("Success a Customer Recording.");
+							location.reload();
+						}
+						else{
+							alert("Fail to Record a Customer.");
+							location.reload();
+						}
+					},
+					"json"
+				);
+			}
 		});
 </script>
 

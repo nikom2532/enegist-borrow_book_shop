@@ -57,11 +57,13 @@
 					},
 					function(data){
 						console.log("data.success = " + data.success);
-						if(data.success == true){
-							alert("Success a Customer Recording.");
+						if(data.borrow_success == true){
+							alert("Success to Borrow a Book.");
+							location.reload();
 						}
 						else{
-							alert("Fail to Record a Customer.");
+							alert("Fail to Borrow a Book.");
+							location.reload();
 						}
 					},
 					"json"
