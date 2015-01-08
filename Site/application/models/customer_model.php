@@ -12,7 +12,12 @@ class customer_model extends CI_Model
 		$cus_surname = ''
 	)
 	{
-		
+		$data = array(
+			"cus_name" => $cus_name,
+			"cus_surname" => $cus_surname,
+		);
+		$this->db->insert("profile", $data);
+		return $this->db->insert_id();
 	}
 	
 	public function insert_address(
