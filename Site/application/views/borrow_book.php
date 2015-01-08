@@ -61,8 +61,12 @@
 							alert("Success to Borrow a Book.");
 							location.reload();
 						}
-						else{
+						else if(data.borrow_success == false){
 							alert("Fail to Borrow a Book.");
+							location.reload();
+						}
+						else if(data.borrow_success == "Concurrency"){
+							alert("this user already borrow 3 Books.");
 							location.reload();
 						}
 					},
