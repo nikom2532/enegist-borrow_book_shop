@@ -64,7 +64,13 @@
 					work_code: $("[name=work_code]").val()
 				},
 				function(data){
-					console.log(data);
+					console.log("data.success = " + data.success);
+					if(data.success == true){
+						alert("Success a Customer Recording.");
+					}
+					else{
+						alert("Fail to Record a Customer.");
+					}
 				},
 				"json"
 			);
