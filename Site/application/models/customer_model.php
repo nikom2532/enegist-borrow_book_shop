@@ -20,13 +20,6 @@ class customer_model extends CI_Model
 		return $this->db->insert_id();
 	}
 	
-	public function get_address()
-	{
-		return $this->db->
-			select('address1, address2, city, country, zip_code')->
-			get('address')->result();
-	}
-	
 	public function insert_address(
 		$profile_id = '',
 		$address_type_id = '',

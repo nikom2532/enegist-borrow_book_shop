@@ -12,11 +12,6 @@ class Book_model extends CI_Model
 		return $this->db->get('profile')->result();
 	}
 	
-	public function get_book()
-	{
-		return $this->db->get('book')->result();
-	}
-	
 	public function get_count_borrow(
 		$profile_id = ''
 	)

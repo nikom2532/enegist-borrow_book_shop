@@ -8,11 +8,12 @@ class JSON_Address extends CI_Controller {
 		$this->load->library('session');
 		$this->load->model('customer_model');
 		$this->load->model('book_model');
+		$this->load->model('json_model');
 	}
 
 	public function index()
 	{
-		$address = json_encode($this->customer_model->get_address());
+		$address = json_encode($this->json_model->get_address());
 		echo $address;
 	}
 }
