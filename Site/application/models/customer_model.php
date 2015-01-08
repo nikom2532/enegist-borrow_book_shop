@@ -13,8 +13,8 @@ class customer_model extends CI_Model
 	)
 	{
 		$data = array(
-			"cus_name" => $cus_name,
-			"cus_surname" => $cus_surname,
+			"first_name" => $cus_name,
+			"last_name" => $cus_surname,
 		);
 		$this->db->insert("profile", $data);
 		return $this->db->insert_id();
@@ -32,31 +32,15 @@ class customer_model extends CI_Model
 		$code = ''
 	)
 	{
-		if($address_type_id == 1){
-			$data = array(
-				"cus_name" => $cus_name,
-				"cus_surname" => $cus_surname,
-				"address_type_id" => $address_type_id,
-				"home_address_1" => $address_1,
-				"home_address_2" => $address_2,
-				"home_city" => $city,
-				"home_country" => $country,
-				"home_code" => $code,
-			);
-		}
-		elseif ($address_type_id == 2) {
-			$data = array(
-				"cus_name" => $cus_name,
-				"cus_surname" => $cus_surname,
-				"address_type_id" => $address_type_id,
-				"work_address_1" => $address_1,
-				"work_address_2" => $address_2,
-				"work_ciuntry" => $country,
-				"work_cty" => $city,
-				"work_coode" => $code
-			);
-		}
-			
+		$data = array(
+			"address_type_id" => $address_type_id,
+			"profile_id" => $profile_id,
+			"address_1" => $address_1,
+			"address_2" => $address_2,
+			"city" => $city,
+			"country" => $country,
+			"zip_code" => $code
+		);
 		
 		if($this->db->insert("News", $data) == TRUE){
 			return TRUE;
