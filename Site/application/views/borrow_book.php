@@ -1,6 +1,3 @@
-<body>
-
-<div id="container">
 	<h1>Borrow a Book</h1>
 	
 	<form id="add_book" action="#" method="post">

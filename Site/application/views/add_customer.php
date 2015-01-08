@@ -1,6 +1,3 @@
-<body>
-
-<div id="container">
 	<h1>Add Customer</h1>
 	
 	<form id="add_cus" action="#" method="post">
