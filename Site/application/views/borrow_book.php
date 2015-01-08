@@ -56,7 +56,8 @@
 						book_id: $("[name=book_id]").val(),
 					},
 					function(data){
-						console.log("data.success = " + data.success);
+						console.log("data.success = " + data);
+						/*
 						if(data.borrow_success == true){
 							alert("Success to Borrow a Book.");
 							location.reload();
@@ -65,6 +66,7 @@
 							alert("Fail to Borrow a Book.");
 							location.reload();
 						}
+						*/
 					},
 					"json"
 				);
